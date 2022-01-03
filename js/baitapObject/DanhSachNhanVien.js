@@ -45,3 +45,19 @@ function DanhSachNhanVien() {
         }
     }
 }
+
+// Prototype dùng để thêm phương thức và thuộc tính cho lớp đối tượng mà không cần sửa trực tiếp
+DanhSachNhanVien.prototype.searchName = function(keyword) {
+    var mangTK = [];
+    var keywordLower = keyword.toLowerCase();
+    this.mangNV.map(function(nv) {
+        var nameLower = nv.xepLoaiNV.toLowerCase();
+        //kiểm tra từ khóa có tồn tại không
+        var indexName = nameLower.indexOf(keywordLower);
+        if(indexName > -1) {
+            //Có chứa từ khóa
+            mangTK.push(nv);
+        }
+    });
+    return mangTK;
+}
